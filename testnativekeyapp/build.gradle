@@ -2,25 +2,26 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
+
+
+
     defaultConfig {
         applicationId "com.yglx.testjni"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        externalNativeBuild {
-            cmake {
-                cppFlags ""
-            }
-        }
+
     }
     signingConfigs {
+        //注释掉debug签名后，将无法获取密钥
         debug {
-            storeFile file("../test.keystore")
+/*            storeFile file("../test.keystore")
             storePassword "123456"
             keyAlias "test1"
-            keyPassword "123456"
+            keyPassword "123456"*/
         }
 
         // 正式版
@@ -29,22 +30,19 @@ android {
     }
     buildTypes {
         debug {
-            signingConfig signingConfigs.debug
+
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    externalNativeBuild {
-        cmake {
-            path "CMakeLists.txt"
-        }
-    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'

@@ -18,7 +18,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Example of a call to a native method
         TextView tv = (TextView) findViewById(R.id.sample_text);
-        tv.setText(getKey());
+        //校验了签名
+        tv.setText(getSafeKey(this));
+        //未校验签名
+//        tv.setText(getKey());
     }
 
     /**
@@ -26,4 +29,6 @@ public class MainActivity extends AppCompatActivity {
      * which is packaged with this application.
      */
     public native String getKey();
+
+    public native String getSafeKey(Object object);
 }

@@ -44,5 +44,3 @@ Java_com_yglx_testjni_MainActivity_getSafeKey(JNIEnv *env, jobject instance,jobj
 }
 ```
 到这里，使用cpp并且用校验应用签名的方法就能达到一个对密钥的比较好的保护。
-## 附上实践中的代码链接
-[github demo](https://github.com/yglx/protectSecretKeyDemo)
